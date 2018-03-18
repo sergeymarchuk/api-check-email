@@ -14,7 +14,9 @@
     if (!empty($_POST['email']) && !empty($_POST['text'])) {
         $mail = new MailHelper($_POST['email'], $_POST['text']);
 
-        $mail->checkEmail();
+        if (!$mail->checkEmail()) {
+            echo "<p>Ваш адрес не прошел проверку. Сообщение не отправлено.</p><br>";
+        }
     }
 
     require_once "send_form.php";
