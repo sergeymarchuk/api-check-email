@@ -9,11 +9,12 @@
 
 <?php 
     error_reporting(E_ALL);
-    require_once "Mail.php";
+    require_once "MailHelper.php";
 
     if (!empty($_POST['email']) && !empty($_POST['text'])) {
-        $mail = new Mail($_POST['email'], $_POST['text']);
-        
+        $mail = new MailHelper($_POST['email'], $_POST['text']);
+
+        $mail->checkEmail();
     }
 
     require_once "send_form.php";
